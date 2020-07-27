@@ -2,8 +2,7 @@
 
 namespace App\Command;
 
-use App\Models\User;
-use App\Models\UserDevelop;
+use App\Models\UserCreator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,14 +15,14 @@ class UserCanDoCommand extends Command
         $this->setName('can')
             ->addArgument('position', InputArgument::REQUIRED, 'User position')
             ->addArgument('action', InputArgument::REQUIRED, 'User action')
-            ->setDescription('Look! What I can do!!!')
-            ->setHelp('This command prints what the user can do');
+            ->setDescription('Check if the user can do the job what you want!')
+            ->setHelp('This command checks if the user can do the job!');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $user = User::getUser($input->getArgument('position'));
+        $user = UserCreator::getUser($input->getArgument('position'));
         $output->writeln($user->can($input->getArgument('action')));
-        return 1;
+        return self::SUCCESS;
     }
 }

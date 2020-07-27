@@ -1,15 +1,14 @@
 {
-    "name": "bober/bober",
+    "name": "kashtanIvan/test-console",
     "authors": [
         {
             "name": "Ivan",
-            "email": "ivan.novotnyi@giraffesoftware.com"
+            "email": "novotnyi.ivan@gmail.com"
         }
     ],
     "require": {
         "php": "^7.2.0",
-        "symfony/console": "^5.1",
-        "squizlabs/php_codesniffer": "^3.4"
+        "symfony/console": "^5.1"
     },
     "autoload": {
         "psr-4": {

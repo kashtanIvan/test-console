@@ -2,8 +2,7 @@
 
 namespace App\Command;
 
-use App\Models\User;
-use App\Models\UserDevelop;
+use App\Models\UserCreator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,10 +20,8 @@ class UserInfoCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $user = User::getUser($input->getArgument('position'));
-        foreach ($user->userActions() as $action) {
-            $output->writeln('- '. $action);
-        }
-        return 1;
+        $user = UserCreator::getUser($input->getArgument('position'));
+        $output->writeln($user->printActions());
+        return self::SUCCESS;
     }
 }
